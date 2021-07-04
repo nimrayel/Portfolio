@@ -1,0 +1,47 @@
+- Exercise:
+Find the model number, speed and hard drive capacity of PCs cheaper than $600 having a 12x or a 24x CD drive.
+SELECT DISTINCT model, speed, hd FROM PC WHERE (cd = '12x' OR cd = '24x') AND price < 600;
+
+- Exercise:
+For each maker producing laptops with a hard drive capacity of 10 Gb or higher, find the speed of such laptops. Result set: maker, speed.
+SELECT DISTINCT maker, speed 
+FROM Product INNER JOIN Laptop ON Laptop.model = Product.model
+WHERE hd >= 10 AND type = 'Laptop';
+
+- Exercise:
+Get the models and prices for all commercially available products (of any type) produced by maker B.
+SELECT PC.model, price
+FROM PC INNER JOIN Product ON PC.model = Product.model
+WHERE maker = 'B'
+UNION
+SELECT Laptop.model, price 
+FROM Laptop INNER JOIN Product ON Laptop.model = Product.model
+WHERE maker = 'B'
+UNION
+SELECT Printer.model, price 
+FROM Printer INNER JOIN Product ON Printer.model = Product.model
+WHERE maker = 'B';
+
+- Exercise:
+Find the makers producing PCs but not laptops.
+SELECT maker FROM Product WHERE type IN ('PC') 
+EXCEPT 
+SELECT maker FROM Product WHERE type IN ('Laptop');
+
+- Exercise:
+For each maker having models in the Laptop table, find out the average screen size of the laptops he produces.
+Вывести: maker, средний размер экрана.
+SELECT DISTINCT maker, AVG(Laptop.screen) AS avg_screen 
+FROM Product JOIN Laptop ON Product.model = Laptop.model
+GROUP BY maker;
+
+- Exercise:
+Find the makers producing at least three distinct models of PCs.
+Result set: maker, number of PC models.
+SELECT maker, COUNT (model) AS Count_Model 
+FROM Product WHERE type = 'PC' GROUP BY maker HAVING Count (model) >= 3;
+
+- Exercise:
+Find out the average speed of the PCs produced by maker A.
+SELECT AVG(speed) FROM PC
+WHERE model IN (SELECT model FROM Product WHERE maker = 'A');
