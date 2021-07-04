@@ -1,0 +1,46 @@
+- Задание:
+Найдите номер модели, скорость и размер жесткого диска ПК, имеющих 12x или 24x CD и цену менее 600 дол.
+SELECT DISTINCT model, speed, hd FROM PC WHERE (cd = '12x' OR cd = '24x') AND price < 600;
+
+- Задание:
+Для каждого производителя, выпускающего ПК-блокноты c объёмом жесткого диска не менее 10 Гбайт, найти скорости таких ПК-блокнотов. Вывод: производитель, скорость.
+SELECT DISTINCT maker, speed 
+FROM Product INNER JOIN Laptop ON Laptop.model = Product.model
+WHERE hd >= 10 AND type = 'Laptop';
+
+- Задание:
+Найдите номера моделей и цены всех имеющихся в продаже продуктов (любого типа) производителя B (латинская буква).
+SELECT PC.model, price
+FROM PC INNER JOIN Product ON PC.model = Product.model
+WHERE maker = 'B'
+UNION
+SELECT Laptop.model, price 
+FROM Laptop INNER JOIN Product ON Laptop.model = Product.model
+WHERE maker = 'B'
+UNION
+SELECT Printer.model, price 
+FROM Printer INNER JOIN Product ON Printer.model = Product.model
+WHERE maker = 'B';
+
+- Задание:
+Найдите производителя, выпускающего ПК, но не ПК-блокноты.
+SELECT maker FROM Product WHERE type IN ('PC') 
+EXCEPT 
+SELECT maker FROM Product WHERE type IN ('Laptop');
+
+- Задание:
+Для каждого производителя, имеющего модели в таблице Laptop, найдите средний размер экрана выпускаемых им ПК-блокнотов.
+Вывести: maker, средний размер экрана.
+SELECT DISTINCT maker, AVG(Laptop.screen) AS avg_screen 
+FROM Product JOIN Laptop ON Product.model = Laptop.model
+GROUP BY maker;
+
+- Задание:
+Найдите производителей, выпускающих по меньшей мере три различных модели ПК. Вывести: Maker, число моделей ПК
+SELECT maker, COUNT (model) AS Count_Model 
+FROM Product WHERE type = 'PC' GROUP BY maker HAVING Count (model) >= 3;
+
+- Задание:
+Найдите среднюю скорость ПК, выпущенных производителем A.
+SELECT AVG(speed) FROM PC
+WHERE model IN (SELECT model FROM Product WHERE maker = 'A');
