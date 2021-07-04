@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "9c143fd6-6023-46ab-b119-018e98a5c72f",
+		"name": "Portfolio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Swagger Petshop SET",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 13,\r\n  \"username\": \"Akashi\",\r\n  \"firstName\": \"Kevin\",\r\n  \"lastName\": \"Smith\",\r\n  \"email\": \"akashi@test.com\",\r\n  \"password\": \"123\",\r\n  \"phone\": \"89876543210\",\r\n  \"userStatus\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{petstore_url}}/user",
+							"host": [
+								"{{petstore_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{petstore_url}}/user/Akashi",
+							"host": [
+								"{{petstore_url}}"
+							],
+							"path": [
+								"user",
+								"Akashi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 13,\r\n  \"username\": \"Atsushi\",\r\n  \"firstName\": \"Kevin\",\r\n  \"lastName\": \"Smith\",\r\n  \"email\": \"atsushi@test.com\",\r\n  \"password\": \"123\",\r\n  \"phone\": \"89876543210\",\r\n  \"userStatus\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{petstore_url}}/user/Akashi",
+							"host": [
+								"{{petstore_url}}"
+							],
+							"path": [
+								"user",
+								"Akashi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Check After Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{petstore_url}}/user/Atsushi",
+							"host": [
+								"{{petstore_url}}"
+							],
+							"path": [
+								"user",
+								"Atsushi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{petstore_url}}/user/Atsushi",
+							"host": [
+								"{{petstore_url}}"
+							],
+							"path": [
+								"user",
+								"Atsushi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Check After Update Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{petstore_url}}/user/Atsushi",
+							"host": [
+								"{{petstore_url}}"
+							],
+							"path": [
+								"user",
+								"Atsushi"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NASA APOD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/planetary/apod?date=2021-07-01&api_key={{api_key}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"planetary",
+						"apod"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2021-07-01"
+						},
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bugred New User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/doregister",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reqres Login + token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/login",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SOAP",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<Envelope xmlns=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <Body>\r\n        <NumberToWords xmlns=\"http://www.dataaccess.com/webservicesserver/\">\r\n            <ubiNum>112</ubiNum>\r\n        </NumberToWords>\r\n    </Body>\r\n</Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL",
+					"protocol": "https",
+					"host": [
+						"www",
+						"dataaccess",
+						"com"
+					],
+					"path": [
+						"webservicesserver",
+						"numberconversion.wso"
+					],
+					"query": [
+						{
+							"key": "WSDL",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
