@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<?charles serialisation-version='2.0' ?>
+<blacklist>
+  <locations>
+    <locationPatterns>
+      <locationMatch>
+        <location>
+          <protocol>https</protocol>
+          <host>okami.by</host>
+          <path>/cart/</path>
+        </location>
+        <enabled>true</enabled>
+      </locationMatch>
+    </locationPatterns>
+  </locations>
+  <toolEnabled>true</toolEnabled>
+  <useSelectedLocations>false</useSelectedLocations>
+  <action>1</action>
+</blacklist>
