@@ -1,0 +1,20 @@
+﻿*Email field doesn't have validation check*
+Type: Bug
+Author: Makhmu
+Priority: Medium
+Severity: Minor
+Assigned to: Dev
+Environment: Browser Firefox 88.0.1 (32-bit), ОС Windows 7 (64 bit)
+Attachments: No_validation.jpg, Error_example_from_internet.png     
+
+Steps To Reproduse:
+# Open the figure searching service page on [Okami.by |https://okami.by/search/]
+# Input incorrect data in "Email" field and "Confirm email", for example, email with misprint “test@gmail.co”, or email with forbidden specials “te$t@.gmail-.com”, or definitely not an email - “---авыарsdgf/.m#$%^&*”.
+# Fill other fields with correct data, for example, "Name" - Anna, "Phone" - 2345678, "Text field" - Text and press "Send" button.
+
+Actual Result
+Email is accepted, email field is marked with green check-mark, system allows sending request. (look at attach "No_validation.jpg").
+
+Expected Result
+Email is not accepted, email field is marked with red color, system shows error message "Please, input correct email" and doesn't allow sending request (look at attach "Error_example_from_internet.png"). 
+If email's name specifies incorrectly, there is no way to send response. Email should consist of latin symbols, start from letter or number, has @ with subdomain and domain, separated with dot. Also email could have one allowed special (dot, hyphen or underscore) in local part.
