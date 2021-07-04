@@ -12,5 +12,5 @@ They also give the opportunity for producing goods with your own design.
 <h4>Main features for the customers:</h4>
 Searching and purchasing goods provided by site, searching requests, ordering stuff with customer design.
 <br>
-<br>
+
 <a href="https://bitbucket.org/testbasecode/folks/src/master/">FOLKS</a> - open-source project
